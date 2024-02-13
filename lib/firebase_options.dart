@@ -17,15 +17,24 @@ import 'package:flutter/foundation.dart'
 class DefaultFirebaseOptions {
   static FirebaseOptions get currentPlatform {
     if (kIsWeb) {
-      return web;
+      throw UnsupportedError(
+        'DefaultFirebaseOptions have not been configured for web - '
+        'you can reconfigure this by running the FlutterFire CLI again.',
+      );
     }
     switch (defaultTargetPlatform) {
       case TargetPlatform.android:
         return android;
       case TargetPlatform.iOS:
-        return ios;
+        throw UnsupportedError(
+          'DefaultFirebaseOptions have not been configured for ios - '
+          'you can reconfigure this by running the FlutterFire CLI again.',
+        );
       case TargetPlatform.macOS:
-        return macos;
+        throw UnsupportedError(
+          'DefaultFirebaseOptions have not been configured for macos - '
+          'you can reconfigure this by running the FlutterFire CLI again.',
+        );
       case TargetPlatform.windows:
         throw UnsupportedError(
           'DefaultFirebaseOptions have not been configured for windows - '
@@ -43,39 +52,11 @@ class DefaultFirebaseOptions {
     }
   }
 
-  static const FirebaseOptions web = FirebaseOptions(
-    apiKey: 'AIzaSyDx0mUngQdsy7gQohWI4SMNxGv4IxTHJgA',
-    appId: '1:409243425684:web:f450ca86cd0c3a4d28cd81',
-    messagingSenderId: '409243425684',
-    projectId: 'my-chatting-app-4ea1e',
-    authDomain: 'my-chatting-app-4ea1e.firebaseapp.com',
-    storageBucket: 'my-chatting-app-4ea1e.appspot.com',
-    measurementId: 'G-GQCDYHRDCY',
-  );
-
   static const FirebaseOptions android = FirebaseOptions(
     apiKey: 'AIzaSyDecVBKWBV5sDpWJHOoCJQSnE5uxHi_GxY',
     appId: '1:409243425684:android:a40c15a516d65b5828cd81',
     messagingSenderId: '409243425684',
     projectId: 'my-chatting-app-4ea1e',
     storageBucket: 'my-chatting-app-4ea1e.appspot.com',
-  );
-
-  static const FirebaseOptions ios = FirebaseOptions(
-    apiKey: 'AIzaSyD0hzcwXh_kZcT8icoGY5iJE1EwOazEIIE',
-    appId: '1:409243425684:ios:32ca4cc4b200117428cd81',
-    messagingSenderId: '409243425684',
-    projectId: 'my-chatting-app-4ea1e',
-    storageBucket: 'my-chatting-app-4ea1e.appspot.com',
-    iosBundleId: 'com.example.chatApp',
-  );
-
-  static const FirebaseOptions macos = FirebaseOptions(
-    apiKey: 'AIzaSyD0hzcwXh_kZcT8icoGY5iJE1EwOazEIIE',
-    appId: '1:409243425684:ios:1149b66381258e4528cd81',
-    messagingSenderId: '409243425684',
-    projectId: 'my-chatting-app-4ea1e',
-    storageBucket: 'my-chatting-app-4ea1e.appspot.com',
-    iosBundleId: 'com.example.chatApp.RunnerTests',
   );
 }
